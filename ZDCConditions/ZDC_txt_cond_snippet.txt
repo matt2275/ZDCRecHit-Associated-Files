@@ -1,0 +1,31 @@
+CONDDIR = /src/contitions/   #  whatever is the local directory with conditions 
+
+process.es_prefer = cms.ESPrefer('HcalTextCalibrations','es_ascii')
+process.es_ascii = cms.ESSource('HcalTextCalibrations',
+    input = cms.VPSet(
+       cms.PSet(
+          object = cms.string('ChannelQuality'),
+          file   = cms.FileInPath(CONDDIR+'ChannelQuality_ZDC.txt')
+       ),
+      cms.PSet(
+          object = cms.string('Pedestals'),
+          file   = cms.FileInPath(CONDDIR+'EffectivePedestals_ZDC.txt')
+      ),
+      cms.PSet(
+          object = cms.string('ElectronicsMap'),
+          file   = cms.FileInPath(CONDDIR+'ZDCemap_2021.txt')
+      ),
+      cms.PSet(
+          object = cms.string('QIEData'),
+          file   = cms.FileInPath(CONDDIR+'QIEData_ZDC.txt')
+      ),
+      cms.PSet(
+          object = cms.string('QIETypes'),
+          file   = cms.FileInPath(CONDDIR+'QIETypes_ZDC.txt')
+      ),
+      cms.PSet(
+          object = cms.string('RespCorrs'),
+          file   = cms.FileInPath(CONDDIR+'RespCorrs_ZDC.txt')
+      )
+   )
+)
