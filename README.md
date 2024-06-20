@@ -16,9 +16,9 @@ cmsenv
 git cms-init
 
 git cms-addpkg RecoLocalCalo/HcalRecAlgos
-git cms-addpkg RecoLocalCalo/HCalRecProducers
+git cms-addpkg RecoLocalCalo/HcalRecProducers
 git cms-addpkg DataFormats/HcalRecHit
-git cms-addpkg DataFormats/HCalDetId
+git cms-addpkg DataFormats/HcalDetId
 ```
 ### adding new and updated files
 in CMSSW/src
@@ -26,6 +26,9 @@ in CMSSW/src
 ```
 wget https://raw.githubusercontent.com/matt2275/ZDCRecHit-Associated-Files/master/HcalZDCDetId.h
 mv HcalZDCDetId.h DataFormats/HcalDetId/interface/HcalZDCDetId.h
+
+wget https://raw.githubusercontent.com/matt2275/ZDCRecHit-Associated-Files/master/classes_def.xml
+mv classes_def.xml DataFormats/HcalDetId/src/classes_def.xml
 
 wget https://raw.githubusercontent.com/matt2275/cmssw/Test_ZDCRecHit/DataFormats/HcalRecHit/interface/ZDCRecHit.h
 mv ZDCRecHit.h DataFormats/HcalRecHit/interface/ZDCRecHit.h
