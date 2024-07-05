@@ -60,6 +60,11 @@ scram b -j 8
 
 ```
 
+Note that you will most likely have a checksum error related to  the DataFormats/HcalRecHits/src/classes_def.xml file. 
+Follow the instuctions given by the compliler which will involve adding a new version to the ZDCRecHit and updating the version
+After updating clases_def.xml rebuild. 
+
+
 ### Getting cmsRun files
 While still in CMSSW/src.
 
