@@ -105,7 +105,7 @@ Run via cmsRun:
 cmsRun testZdcRecHits.py
 ```
 
-## Testing Without Analyzer
+## Testing With Analyzer
 
 This test file will product 2 output files. One file with the zdcroco and zdcdigi information and another that processes the rechits and digis into an Analyzer Tree. 
 
