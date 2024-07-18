@@ -23,7 +23,7 @@ git cms-addpkg DataFormats/HcalDetId
 ### adding new and updated files
 in CMSSW/src
 
-Note the first two files moved are related to a temporary fix to ZDC Geometry to all the RPD digis to be processed
+Note the first two files moved are related to a temporary fix to ZDC Geometry to allow the RPD digis to be processed
 
 ```
 wget https://raw.githubusercontent.com/matt2275/ZDCRecHit-Associated-Files/master/HcalZDCDetId.h
