@@ -22,7 +22,7 @@ process.maxEvents = cms.untracked.PSet(
 #-----------------------------------------
 
 process.source = cms.Source("PoolSource",
-  fileNames = cms.untracked.vstring('/store/hidata/HIRun2023A/HIForward0/AOD/PromptReco-v2/000/374/803/00000/ae4e6175-0f1a-475a-a2ce-1754ba8aa154.root'),
+  fileNames = cms.untracked.vstring('/store/hidata/HIRun2023A/HIForward0/AOD/16Jan2024-v1/40000/39981cc6-58ab-44c8-9b5b-d4588797d7ae.root'),
   
   # removing old zdcreco
   inputCommands = cms.untracked.vstring('keep *', 
@@ -40,78 +40,13 @@ process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 # -----------------------------------------
 
 
-process.load("RecoLocalCalo.HcalRecProducers.HcalHitReconstructor_zdc_Run3_cfi")
-
-process.zdcreco.ignoreRPD = cms.bool(False)
+process.zdcreco = cms.EDProducer('ZdcHitReconstructor_Run3')
+process.zdcreco.skipRPD = cms.bool(True)
 
 
 
 
 process.load("RecoLocalCalo.HcalRecAlgos.hcalRecAlgoESProd_cfi")
-
-
-# Salavat's fix to allow hardcoded REAL ZDC info 
-CONDDIR = 'ZDC_Conditions/'   #  directory with txt conditions in the local release area  
-
-process.es_prefer = cms.ESPrefer('HcalTextCalibrations','es_ascii')
-process.es_ascii = cms.ESSource('HcalTextCalibrations',
-    input = cms.VPSet(
-       cms.PSet(
-          object = cms.string('ChannelQuality'),
-          file   = cms.FileInPath(CONDDIR+'ChannelQuality_ZDC.txt')
-       ),
-      cms.PSet(
-          object = cms.string('Pedestals'),
-          file   = cms.FileInPath(CONDDIR+'Pedestals_ZDC.txt')
-          # file   = cms.FileInPath(CONDDIR+'Pedestals_ZDC.txt')
-      ),
-      cms.PSet(
-          object = cms.string('EffectivePedestals'),
-          file   = cms.FileInPath(CONDDIR+'EffectivePedestals_ZDC.txt')
-          # file   = cms.FileInPath(CONDDIR+'Pedestals_ZDC.txt')
-      ),
-      cms.PSet(
-          object = cms.string('PedestalWidths'),
-          file   = cms.FileInPath(CONDDIR+'PedestalWidths_ZDC_wIntro.txt')
-      ),
-      cms.PSet(
-          object = cms.string('EffectivePedestalWidths'),
-          file   = cms.FileInPath(CONDDIR+'EffectivePedestalWidths_ZDC_wIntro.txt')
-      ),
-      cms.PSet(
-          object = cms.string('Gains'),
-          file   = cms.FileInPath(CONDDIR+'Gains_ZDC_NonZeroRPD.txt')
-      ),
-      cms.PSet(
-          object = cms.string('TimeCorrs'),
-          file   = cms.FileInPath(CONDDIR+'TimeCorrs_ZDC.txt')
-      ),
-      cms.PSet(
-          object = cms.string('LUTCorrs'),
-          file   = cms.FileInPath(CONDDIR+'LUTCorrs_ZDC.txt')
-      ),
-      cms.PSet(
-          object = cms.string('ElectronicsMap'),
-          file   = cms.FileInPath(CONDDIR+'ElectronicsMap_ZDC.txt')
-      ),
-      cms.PSet(
-          object = cms.string('QIEData'),
-          file   = cms.FileInPath(CONDDIR+'QIEData_ZDC_AVG.txt')
-      ),
-      cms.PSet(
-          object = cms.string('QIETypes'),
-          file   = cms.FileInPath(CONDDIR+'QIETypes_ZDC.txt')
-      ),
-      cms.PSet(
-          object = cms.string('LongRecoParams'),
-          file   = cms.FileInPath(CONDDIR+'LongRecoParams.txt')
-      ),
-      cms.PSet(
-          object = cms.string('RespCorrs'),
-          file   = cms.FileInPath(CONDDIR+'RespCorrs_ZDC.txt')
-      )
-   )
-)
 
 
 process.out = cms.OutputModule("PoolOutputModule",
