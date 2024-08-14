@@ -22,7 +22,7 @@ process.maxEvents = cms.untracked.PSet(
 #-----------------------------------------
 
 process.source = cms.Source("PoolSource",
-  fileNames = cms.untracked.vstring('/store/hidata/HIRun2023A/HIForward0/AOD/PromptReco-v2/000/374/803/00000/ae4e6175-0f1a-475a-a2ce-1754ba8aa154.root'),
+  fileNames = cms.untracked.vstring('/store/hidata/HIRun2023A/HIForward0/AOD/16Jan2024-v1/2810000/14f851d2-7c11-4ac4-9650-3428cc184582.root'),
   
   # removing old zdcreco
   inputCommands = cms.untracked.vstring('keep *', 
@@ -40,10 +40,8 @@ process.load('Configuration.StandardSequences.GeometryRecoDB_cff')
 # -----------------------------------------
 
 
-process.load("RecoLocalCalo.HcalRecProducers.HcalHitReconstructor_zdc_Run3_cfi")
-
-process.zdcreco.ignoreRPD = cms.bool(False)
-
+process.zdcreco = cms.EDProducer('ZdcHitReconstructor_Run3')
+process.zdcreco.skipRPD = cms.bool(False)
 
 
 
